@@ -17,12 +17,22 @@ class Product:
             return self.price * quantity * 0.8  
 
     def make_purchase(self, quantity):
-        if quantity < 0:
-            raise ValueError("Cannot purchase negative quantity")
+        if quantity <= 0:
+            raise ValueError("Purchase quantity must be greater than zero.")
         if quantity > self.amount:
             raise ValueError(f"Only {self.amount} items in stock")
         
         total_price = self.get_price(quantity)
         self.amount -= quantity 
-        print(f"Total price: {total_price}")
+        print(f"Purchase successful! You bought {quantity} {self.name}(s) for ${total_price:.2f}.")
         print(f"Remaining stock: {self.amount}")
+        return total_price
+try:
+    product = Product("Laptop", 50, 1000)
+
+    product.make_purchase(5)  
+    product.make_purchase(15)  
+    product.make_purchase(50)  
+    product.make_purchase(100)  
+except ValueError as e:
+    print(f"Error: {e}")
