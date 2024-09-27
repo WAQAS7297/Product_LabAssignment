@@ -12,9 +12,9 @@ class Product:
         elif quantity < 10:
             return self.price * quantity
         elif 10 <= quantity < 100:
-            return self.price * quantity * 0.9  # 10% discount
+            return self.price * quantity * 0.9 
         else:
-            return self.price * quantity * 0.8  # 20% discount
+            return self.price * quantity * 0.8  
 
     def make_purchase(self, quantity):
         if quantity < 0:
@@ -23,6 +23,6 @@ class Product:
             raise ValueError(f"Only {self.amount} items in stock")
         
         total_price = self.get_price(quantity)
-        self.amount -= quantity  # Reduce stock
+        self.amount -= quantity 
         print(f"Total price: {total_price}")
         print(f"Remaining stock: {self.amount}")
