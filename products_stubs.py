@@ -17,4 +17,12 @@ class Product:
             return self.price * quantity * 0.8  # 20% discount
 
     def make_purchase(self, quantity):
-        pass
+        if quantity < 0:
+            raise ValueError("Cannot purchase negative quantity")
+        if quantity > self.amount:
+            raise ValueError(f"Only {self.amount} items in stock")
+        
+        total_price = self.get_price(quantity)
+        self.amount -= quantity  # Reduce stock
+        print(f"Total price: {total_price}")
+        print(f"Remaining stock: {self.amount}")
