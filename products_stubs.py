@@ -7,7 +7,14 @@ class Product:
         self.price = price
 
     def get_price(self, quantity):
-        pass
+        if quantity < 0:
+            raise ValueError("Quantity cannot be negative")
+        elif quantity < 10:
+            return self.price * quantity
+        elif 10 <= quantity < 100:
+            return self.price * quantity * 0.9  # 10% discount
+        else:
+            return self.price * quantity * 0.8  # 20% discount
 
     def make_purchase(self, quantity):
         pass
