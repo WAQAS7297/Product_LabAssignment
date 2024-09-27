@@ -16,6 +16,6 @@ class Product:
             raise ValueError(f"Only {self.amount} items in stock")
         
         total_price = self.get_price(quantity)
-        self.amount -= quantity  # Reduce stock
+        self.amount -= quantity  
         print(f"Total price: {total_price}")
         print(f"Remaining stock: {self.amount}")
